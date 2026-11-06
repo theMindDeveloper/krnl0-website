@@ -1233,3 +1233,25 @@ html { scroll-padding-top: 84px; }
   .foot-last { flex-direction: column; align-items: flex-start; gap: 18px; }
   .foot-last .btn { white-space: nowrap; }
 }
+/* hero, left side: the block mark, the line, the seven apps as chips, one button. Keeps .h-lead and .h-actions,
+   so every breakpoint rule above (place under the cube on phones, widths beside the cube) still applies. */
+#cube-tile .h-copy > .h-mark { position: relative; z-index: 3; display: flex; align-items: flex-end; gap: 5px; height: clamp(38px, 4vw, 58px); margin-bottom: -6px; }
+.h-mark span { width: clamp(28px, 2.8vw, 41px); border-radius: 7px; color: #0a0908; font-weight: 800; font-size: clamp(17px, 1.9vw, 28px); line-height: 1; display: flex; align-items: flex-end; padding: 0 0 4px 6px; }
+.h-mark span:nth-child(1) { height: 100%; background: var(--acid); } .h-mark span:nth-child(2) { height: 78%; background: var(--ink-dark); color: var(--cream); }
+.h-mark span:nth-child(3) { height: 90%; background: var(--rust); } .h-mark span:nth-child(4) { height: 70%; background: var(--cyan); }
+.h-mark span:nth-child(5) { height: 84%; background: var(--purple); }
+.h-hl { font-style: normal; padding: 0 0.06em; border-radius: 0.1em; background: linear-gradient(180deg, transparent 14%, var(--acid) 14%, var(--acid) 92%, transparent 92%); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+#cube-tile .h-copy > .h-apps { display: flex; flex-direction: column; gap: 10px; }
+.h-apps p { margin: 0; }
+.h-apps-l { font-size: 14px; font-weight: 700; color: #554b38; }
+.h-apps-c { display: flex; flex-wrap: wrap; gap: 7px; }
+.h-apps-c .app-w { display: inline-block; padding: 6px 11px; border-radius: 8px; font-size: 15px; line-height: 1.2; }
+#cube-tile .h-copy > .h-actions { align-items: center; gap: 12px 20px; }
+.h-meta { margin: 0; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #554b38; }
+.h-meta a { color: #1a1612; font-weight: 700; text-underline-offset: 3px; }
+@media (max-width: 640px) { .h-apps-c .app-w { font-size: 13px; padding: 5px 9px; } .h-meta { flex: 1 1 100%; } }
+/* the block mark sits above the headline, so where the cube stands over the headline it moves down by the mark's
+   height (38px block + 18px space): the cube and the words keep exactly the overlap they had before */
+@media (max-width: 1099px) { #cube-tile { --cube-top: 112px; } }
+@media (max-width: 900px)  { #cube-tile { --cube-top: 104px; } }
+@media (max-width: 640px)  { #cube-tile { --cube-top: 86px; } }
