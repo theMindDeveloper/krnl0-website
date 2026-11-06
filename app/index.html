@@ -55,6 +55,12 @@
       Object.defineProperty(P, 'src', { get: d.get, set: function (v) { d.set.call(this, far(v) ? 'about:blank' : v); }, configurable: true });
     });
   }
+  // an embed that focuses one of its own fields (a list's input, the terminal) must never scroll the page it sits
+  // in: Safari would carry the visitor from the top of the site down to that tile on the first load
+  if (window !== window.parent) {
+    var fo = HTMLElement.prototype.focus;
+    HTMLElement.prototype.focus = function (o) { var x = {}; if (o) for (var k in o) x[k] = o[k]; x.preventScroll = true; return fo.call(this, x); };
+  }
   // the radio has its own embed; in the full app it would sit on the calendar's edge
   if (q.get('solo') !== 'radio') document.write('<style>[data-testid="ambient-radio"]{display:none!important}</style>');
   // bare: only the part itself is painted; the page around it is see-through
