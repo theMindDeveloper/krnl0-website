@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head><script>(function(){
+  var q = new URLSearchParams(location.search), mem = {};
+  if (q.get('dock')) mem['krnl0-dock-style'] = q.get('dock');
+  mem['krnl0-theme'] = q.get('theme') || 'dark';
+  if (q.get('orb')) { var o = q.get('orb').split(','); mem['krnl0-orb-pos-v4'] = JSON.stringify({ x: +o[0], y: +o[1] }); }
+  var P = Storage.prototype, get = P.getItem, set = P.setItem, del = P.removeItem;
+  var mine = function (s) { try { return s === window.localStorage; } catch (e) { return false; } };
+  P.getItem = function (k) { return mine(this) ? (k in mem ? mem[k] : null) : get.call(this, k); };
+  P.setItem = function (k, v) { if (mine(this)) mem[k] = String(v); else set.call(this, k, v); };
+  P.removeItem = function (k) { if (mine(this)) delete mem[k]; else del.call(this, k); };
+  // a page holds many embeds, and each one's orb would greet out loud at once: only the radio may make sound
+  // and a silent embed should not download the voice clips either: new Audio(url) gets an element with no source
+  if (q.get('solo') !== 'radio') {
+    HTMLAudioElement.prototype.play = function () { return Promise.resolve(); };
+    var A = window.Audio; window.Audio = function () { var a = new A(); a.preload = 'none'; return a; }; window.Audio.prototype = A.prototype;
+    if (window.speechSynthesis) window.speechSynthesis.speak = function () {};
+  }
+  // the radio has its own embed; in the full app it would sit on the calendar's edge
+  if (q.get('solo') !== 'radio') document.write('<style>[data-testid="ambient-radio"]{display:none!important}</style>');
+  // bare: only the part itself is painted; the page around it is see-through
+  if (q.get('bare') || q.get('solo') === 'radio') document.write('<style>:root{color-scheme:normal!important}html,body,#root{background:transparent!important}</style>');
+})();</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KRNL0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Geist:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="./assets/app.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

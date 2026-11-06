@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://theminddeveloper.github.io/krnl0-website/sitemap.xml
