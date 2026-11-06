@@ -153,14 +153,16 @@ function directDownload() {
     .catch(() => {});
 }
 
-/* download: say the right thing for the visitor's computer */
+/* download: say the right thing for the visitor's computer. Windows gets the installer straight away; a Mac or a
+   Linux machine goes to its part of the install guide, which always has the newest file for it. A phone or a tablet
+   can't run KRNL0 (an iPhone even calls itself "Mac OS X"), so it is pointed at the guide for a computer. */
 (() => {
-  const p = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '').toLowerCase();
-  const os = /mac|iphone|ipad/.test(p) ? 'macOS' : /linux|x11|android|cros/.test(p) ? 'Linux' : 'Windows';
-  if (os === 'Windows') { directDownload(); return; }
-  document.querySelectorAll('[data-dl]').forEach((a) => { (a.querySelector('.btn-t') || a).textContent = `Get it for ${os}`; a.href = 'https://github.com/theMindDeveloper/krnl0#readme'; });
-  const note = document.querySelector('.dl-note');
-  if (note) note.textContent = `On ${os} you build it from the source for now: three commands, all on GitHub. A Windows installer is ready today.`;
+  const ua = navigator.userAgent || '', p = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '').toLowerCase();
+  const phone = /iphone|ipad|ipod|android/i.test(ua) || (/mac/.test(p) && navigator.maxTouchPoints > 1);
+  const os = phone ? 'phone' : /mac/.test(p) ? 'mac' : /linux|x11|cros/.test(p) ? 'linux' : 'windows';
+  if (os === 'windows') { directDownload(); return; }
+  const say = { phone: ['Get it for your computer', 'download.html'], mac: ['Download for Mac', 'download.html#mac'], linux: ['Download for Linux', 'download.html#linux'] }[os];
+  document.querySelectorAll('[data-dl]').forEach((a) => { (a.querySelector('.btn-t') || a).textContent = say[0]; a.href = say[1]; });
 })();
 
 /* footer: the mark is built like a day being planned. When the footer comes into view the five blocks

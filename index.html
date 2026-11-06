@@ -30,11 +30,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet"><!-- taste-skill-ignore: KRNL0 brand face -->
-<link rel="preload" href="hero.js" as="script">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="scenes/stage.css">
-<link rel="stylesheet" href="scenes/fly.css">
-<link rel="stylesheet" href="scenes/sections.css">
+<link rel="preload" href="hero.js?v=55420f01ce" as="script">
+<link rel="stylesheet" href="styles.css?v=3242f0e563">
+<link rel="stylesheet" href="scenes/stage.css?v=71bd4619c7">
+<link rel="stylesheet" href="scenes/fly.css?v=d679719312">
+<link rel="stylesheet" href="scenes/sections.css?v=aebad80e66">
 <script>document.documentElement.classList.add('js')</script>
 <script>/* the site always opens at its first screen: a section link clicked earlier leaves #try (or another section) in the address, and reopening it would start there. Only a link from the download page may open a section. */(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual';var h=location.hash,ok=false;try{ok=h&&sessionStorage.getItem('krnl-jump')===h;sessionStorage.removeItem('krnl-jump')}catch(e){}if(h&&!ok)history.replaceState(null,'',location.pathname+location.search);if(!ok){var top=function(){if(!window.__krnlMoved)scrollTo(0,0)};var moved=function(){window.__krnlMoved=true};['wheel','touchstart','keydown','pointerdown'].forEach(function(t){addEventListener(t,moved,{once:true,passive:true})});addEventListener('DOMContentLoaded',top);addEventListener('load',top)}addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)setTimeout(function(){if(location.hash)history.replaceState(null,'',location.pathname+location.search)},0)});}catch(e){}})();</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"KRNL0","applicationCategory":"ProductivityApplication","operatingSystem":"Windows, macOS, Linux","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Timer, to-dos, habits, calendar and clock on one canvas, working together. Free, no account, and your plans stay on your computer.","author":{"@type":"Person","name":"theMindDeveloper","url":"https://github.com/theMindDeveloper"},"downloadUrl":"https://github.com/theMindDeveloper/krnl0/releases/latest","softwareVersion":"0.10.1"}</script>
@@ -404,17 +404,17 @@
   </div>
 </footer>
 
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="scenes/stage.js"></script>
-<script src="scenes/fly.js"></script>
-<script src="scenes/hairline/kernel.js"></script>
-<script src="scenes/sea.js"></script>
-<script src="scenes/glance.js"></script>
-<script src="scenes/hairline/station.js"></script>
+<script src="vendor/gsap.min.js?v=9396f25632"></script>
+<script src="vendor/ScrollTrigger.min.js?v=05ca5ad88c"></script>
+<script src="scenes/stage.js?v=8049453f41"></script>
+<script src="scenes/fly.js?v=6b0221c009"></script>
+<script src="scenes/hairline/kernel.js?v=0c641a7916"></script>
+<script src="scenes/sea.js?v=b4f44e10cc"></script>
+<script src="scenes/glance.js?v=0c00555838"></script>
+<script src="scenes/hairline/station.js?v=2f410f270c"></script>
 <script>Stage.init();</script>
-<script src="hero.js" defer></script>
-<script src="app.js" defer></script>
-<script src="scenes/sections.js" defer></script>
+<script src="hero.js?v=55420f01ce" defer></script>
+<script src="app.js?v=9540ed1028" defer></script>
+<script src="scenes/sections.js?v=ee530e4312" defer></script>
 </body>
 </html>
