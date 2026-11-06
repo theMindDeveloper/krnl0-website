@@ -61,6 +61,18 @@
     var fo = HTMLElement.prototype.focus;
     HTMLElement.prototype.focus = function (o) { var x = {}; if (o) for (var k in o) x[k] = o[k]; x.preventScroll = true; return fo.call(this, x); };
   }
+  // the site's radio plays one sound at a time: picking a sound switches the others off. Stacked layers kept
+  // growing the panel past its tile on phones, and Safari washed the picture out to white with several on.
+  if (q.get('solo') === 'radio') {
+    addEventListener('click', function (e) {
+      var b = e.target && e.target.closest && e.target.closest('[data-testid^="ambient-radio-preset-"]'); if (!b) return;
+      var id = b.getAttribute('data-testid').slice(21);
+      if (document.querySelector('[data-testid="ambient-radio-layer-remove-' + id + '"]')) return;
+      setTimeout(function () {
+        document.querySelectorAll('[data-testid^="ambient-radio-layer-remove-"]').forEach(function (x) { if (x.getAttribute('data-testid').slice(27) !== id) x.click(); });
+      }, 0);
+    }, true);
+  }
   // the radio has its own embed; in the full app it would sit on the calendar's edge
   if (q.get('solo') !== 'radio') document.write('<style>[data-testid="ambient-radio"]{display:none!important}</style>');
   // bare: only the part itself is painted; the page around it is see-through

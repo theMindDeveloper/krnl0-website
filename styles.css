@@ -1021,8 +1021,10 @@ a { text-underline-offset: 0.2em; }
 /* red tile: the dot sits on the line's centre, and the line never re-wraps as the "saved" time changes */
 .hl-save { flex-wrap: nowrap; align-items: center; white-space: nowrap; }
 /* the dot sits on the words' baseline and is lifted by half a capital, so it centres on the letters, not the line box */
-.hl-save { align-items: baseline; }
-.hl-save .hl-dot { align-self: baseline; position: relative; top: -0.3em; top: calc(6px - 0.5cap); }
+/* the save dot sits on the middle of the capitals: each word box is one line tall, so its middle is the text's */
+.hl-save { align-items: center; }
+.hl-save > span { line-height: 1; }
+.hl-save .hl-dot { align-self: center; position: static; top: auto; transform: none; }
 .hl-ago { font-variant-numeric: tabular-nums; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 
 /* footer mark, the arrival: the day schedules itself. The five blocks start as thin time slots on a ruler,
@@ -1212,3 +1214,10 @@ html { scroll-padding-top: 84px; }
 }
 /* the cube takes touch too: a sideways drag spins it, a tap lights a part, an up-or-down swipe still scrolls */
 #cube-tile canvas { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+/* hero: the apps named in their own colours, as marker strokes so the dark words stay readable */
+.h-count { display: block; margin-bottom: 6px; font-weight: 800; }
+.app-w { padding: 0 0.22em; border-radius: 0.28em; color: #14110d; font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.aw-timer { background: var(--acid); } .aw-todo { background: var(--cyan); } .aw-habit { background: var(--purple); }
+.aw-cal { background: var(--rust); } .aw-clock { background: var(--amber); } .aw-radio { background: var(--lilac); }
+/* hero: the way to the install guide, under the buttons */
+#cube-tile .h-copy > .h-install { position: relative; z-index: 3; width: fit-content; max-width: var(--text-w); margin-top: -8px; font-size: 14px; font-weight: 500; color: #3f5c0a; text-underline-offset: 3px; }

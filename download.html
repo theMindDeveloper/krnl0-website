@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download KRNL0 — install guide for Windows, Mac and Linux</title>
+<meta name="description" content="Download KRNL0 for Windows, Mac or Linux and get it running in a minute. Free, no account, and your plans stay on your computer.">
+<link rel="icon" href="assets/krnl0-logo-128.png">
+<meta name="theme-color" content="#121110">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KRNL0">
+<meta property="og:title" content="Download KRNL0">
+<meta property="og:description" content="Free, no account. Install guide for Windows, Mac and Linux.">
+<meta property="og:image" content="assets/og.jpg">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' blob:; frame-src 'self'; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="apple-touch-icon" href="assets/krnl0-logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet"><!-- taste-skill-ignore: KRNL0 brand face -->
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="download.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="dl-page">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topnav">
+  <a class="brand" href="index.html"><img src="assets/krnl0-logo-128.png" width="28" height="28" alt="">KRNL0</a>
+  <nav aria-label="Main">
+    <a href="index.html#try">Overview</a>
+    <a href="index.html#tour">Tour</a>
+    <a href="index.html#inside">Features</a>
+    <a href="#windows">Windows</a>
+    <a href="#mac">Mac</a>
+    <a href="#linux">Linux</a>
+  </nav>
+  <a class="btn btn-sm btn-gh" href="https://github.com/theMindDeveloper" aria-label="theMindDeveloper on GitHub"><svg class="ico ico-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.36 9.36 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.24 10.24 0 0 0 22 12.23C22 6.58 17.52 2 12 2z"/></svg></a>
+  <a class="btn btn-sm" href="#get" aria-current="page"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5"/><path d="M4 18v2h16v-2"/></svg><span class="btn-t">Download</span></a>
+</header>
+
+<main id="main" class="dl">
+
+<!-- ═══ GET IT: the right file for this computer, for the version you pick ═══ -->
+<section class="tile dl-hero" id="get" aria-labelledby="dl-h">
+  <div class="dl-hero-copy">
+    <h1 id="dl-h">Download<br>KRNL0.</h1>
+    <p class="dl-lead">Free. No account. Your plan stays on your computer.</p>
+    <div class="dl-box" data-os="windows">
+      <div class="dl-box-info">
+        <span class="dl-label" data-k="label">Download for</span>
+        <b class="dl-sys" data-k="sys">Windows 10 and 11</b>
+        <span class="dl-meta" data-k="meta">The newest version, straight from GitHub</span>
+      </div>
+      <a class="btn dl-go" data-k="go" href="https://github.com/theMindDeveloper/krnl0/releases/latest"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5"/><path d="M4 18v2h16v-2"/></svg><span data-k="go-t">Download for Windows</span></a>
+      <div class="dl-pick" hidden>
+        <span class="dl-label" id="ver-l">Version</span>
+        <button type="button" class="dl-ver" id="ver-b" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="ver-l ver-b"><span data-k="ver">Latest</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <ul class="dl-list" id="ver-list" role="listbox" aria-labelledby="ver-l" tabindex="-1" hidden></ul>
+      </div>
+    </div>
+    <p class="dl-phone" hidden>KRNL0 runs on a computer. Open this page on your Windows PC or Mac to install it.</p>
+    <a class="dl-other" href="#systems">Other systems and how to install ↓</a>
+  </div>
+  <div class="dl-hero-art"><img src="assets/stills/download-cube.webp" width="1200" height="840" alt="The KRNL0 cube with the timer, to-do list, habits and terminal wired to it"></div>
+</section>
+
+<section class="dl-row dl-systems" id="systems" aria-label="Every system">
+  <article class="tile dl-os dl-os-win" data-os="windows">
+    <h2>Windows</h2>
+    <p>Windows 10 and 11, 64-bit. Installs just for you, no admin needed.</p>
+    <a class="dl-file" href="https://github.com/theMindDeveloper/krnl0/releases/latest"><span data-k="file">Get the installer ↓</span></a>
+    <a class="dl-how" href="#windows">How to install</a>
+  </article>
+  <article class="tile dl-os dl-os-mac" data-os="mac">
+    <h2>Mac</h2>
+    <p>Macs with Apple silicon (M1 and newer).</p>
+    <a class="dl-file" href="https://github.com/theMindDeveloper/krnl0/releases/latest"><span data-k="file">Get the disk image ↓</span></a>
+    <a class="dl-how" href="#mac">How to install</a>
+  </article>
+  <article class="tile dl-os dl-os-linux" data-os="linux">
+    <h2>Linux</h2>
+    <p>One file that runs on most distributions, no install needed.</p>
+    <a class="dl-file" href="https://github.com/theMindDeveloper/krnl0/releases/latest"><span data-k="file">Get the AppImage ↓</span></a>
+    <a class="dl-how" href="#linux">How to install</a>
+  </article>
+</section>
+
+<!-- ═══ WINDOWS ═══ -->
+<section class="tile dl-guide" id="windows" aria-labelledby="win-h">
+  <div class="dl-guide-head">
+    <h2 id="win-h" class="dl-h2">Windows will ask<br>if you trust us.</h2>
+    <p>KRNL0 doesn't have a paid signing certificate yet, so Windows doesn't know who made it. The installer is built in public on GitHub, from code anyone can read. Two clicks, and Windows won't ask again.</p>
+  </div>
+  <ol class="dl-steps">
+    <li>
+      <span class="dl-num" aria-hidden="true">01</span>
+      <div class="dl-shot dl-win" aria-hidden="true">
+        <b>Windows protected your PC</b>
+        <span>Microsoft Defender SmartScreen prevented an unrecognised app from starting.</span>
+        <span class="dl-hot">More info</span>
+      </div>
+      <p>Open the file you downloaded. When this blue window appears, click <b>More info</b>.</p>
+    </li>
+    <li>
+      <span class="dl-num" aria-hidden="true">02</span>
+      <div class="dl-shot dl-win" aria-hidden="true">
+        <span>App: <span data-k="win-file">KRNL0-Setup.exe</span></span>
+        <span>Publisher: Unknown publisher</span>
+        <span class="dl-win-btns"><span class="dl-hot dl-hot-box">Run anyway</span><span class="dl-win-no">Don't run</span></span>
+      </div>
+      <p>Click <b>Run anyway</b>. The installer runs by itself in a few seconds.</p>
+    </li>
+    <li>
+      <span class="dl-num" aria-hidden="true">03</span>
+      <div class="dl-shot dl-open" aria-hidden="true">
+        <img src="assets/krnl0-logo-128.png" width="56" height="56" alt="">
+        <span><b>KRNL<i>0</i></b><small>opening your board</small></span>
+      </div>
+      <p>KRNL0 opens, and you'll find it in the Start menu from now on.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ═══ MAC ═══ -->
+<section class="dl-row" id="mac" aria-labelledby="mac-h">
+  <div class="tile dl-guide dl-half">
+    <h2 id="mac-h" class="dl-h2 dl-h2-s">First time on a Mac</h2>
+    <ol class="dl-list-steps">
+      <li>Open the <b>.dmg</b> you downloaded and drag <b>KRNL0</b> into <b>Applications</b>.</li>
+      <li>Open KRNL0 from Applications. Because it isn't signed by Apple yet, macOS says it can't check it. Click <b>Done</b>.</li>
+      <li>Open <b>System Settings</b>, then <b>Privacy &amp; Security</b>. Scroll down and click <b>Open Anyway</b> next to KRNL0, then confirm.</li>
+      <li>KRNL0 opens. macOS remembers your choice, so it won't ask again.</li>
+    </ol>
+    <p class="dl-note">On older macOS you can also right-click KRNL0 (or Control-click it), choose <b>Open</b>, and click <b>Open</b> again.</p>
+  </div>
+  <div class="tile dl-mac-art" aria-hidden="true">
+    <div class="dl-mac-win">
+      <span class="dl-mac-bar"><i></i><i></i><i></i>Privacy &amp; Security</span>
+      <span class="dl-mac-row">“KRNL0” was blocked to protect your Mac.</span>
+      <span class="dl-mac-btn">Open Anyway</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LINUX ═══ -->
+<section class="tile dl-guide" id="linux" aria-labelledby="linux-h">
+  <div class="dl-guide-head">
+    <h2 id="linux-h" class="dl-h2 dl-h2-s">On Linux</h2>
+    <p class="dl-linux-none" hidden>The Linux version is on its way. Until it is out, you can run KRNL0 from its source code, as shown below.</p>
+  </div>
+  <div class="dl-row dl-linux">
+    <ol class="dl-list-steps">
+      <li>Download the <b>.AppImage</b> file.</li>
+      <li>Right-click it, open <b>Properties</b>, and turn on <b>Allow executing file as program</b>. In a terminal you can type the line on the right instead.</li>
+      <li>Double-click the file. KRNL0 runs straight from it, nothing else to install.</li>
+    </ol>
+    <div class="dl-code-wrap">
+      <span class="dl-label">In a terminal</span>
+      <code class="dl-code">chmod +x KRNL0-*.AppImage &amp;&amp; ./KRNL0-*.AppImage</code>
+      <span class="dl-label">Or from the source</span>
+      <code class="dl-code">git clone https://github.com/theMindDeveloper/krnl0 &amp;&amp; cd krnl0 &amp;&amp; npm install &amp;&amp; npm run dev</code>
+    </div>
+  </div>
+</section>
+
+<section class="dl-row" aria-label="Good to know">
+  <div class="tile dl-feat">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>
+    <h3>Updating</h3>
+    <p>When a new version is out, download it here and run it over the old one. Your board lives in your Documents folder, so it stays as it is.</p>
+  </div>
+  <div class="tile dl-feat">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    <h3>Stays on your computer</h3>
+    <p>No account, no tracking. YouTube videos and AI only reach their own services when you use them.</p>
+  </div>
+  <div class="tile dl-feat">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+    <h3>Free and open</h3>
+    <p>Read the code, build it yourself, or help make it better. MIT licence.</p>
+  </div>
+</section>
+
+<section class="tile dl-next" aria-labelledby="next-h">
+  <h2 id="next-h" class="dl-h2">Installed? Say hello.</h2>
+  <div class="dl-row">
+    <a class="dl-link" href="https://github.com/theMindDeveloper/krnl0/discussions"><b>Ask a question ↗</b><span>Ideas, help, or show your board.</span></a>
+    <a class="dl-link" href="https://github.com/theMindDeveloper/krnl0/issues/new"><b>Report a problem ↗</b><span>Tell us what happened, and we'll fix it.</span></a>
+    <a class="dl-link" href="https://github.com/theMindDeveloper/krnl0/releases"><b>Every release ↗</b><span>What changed in each version.</span></a>
+  </div>
+  <p class="dl-needs"><span>Needs: Windows 10 or 11 (64-bit), a Mac with Apple silicon, or Linux</span><span>Internet: only for YouTube videos and AI, if you use them</span></p>
+</section>
+
+</main>
+
+<footer class="foot" aria-labelledby="foot-h">
+  <h2 id="foot-h" class="blocks" aria-label="KRNL0">
+    <span class="b b1"><small>keep focus</small>K</span><span class="b b2"><small>routines</small>R</span><span class="b b3"><small>now</small>N</span><span class="b b4"><small>local</small>L</span><span class="b b5"><small>zero cost</small>0</span>
+  </h2>
+  <div class="foot-cols">
+    <ul>
+      <li><a href="index.html#try">Overview</a></li>
+      <li><a href="index.html#tour">Tour</a></li>
+      <li><a href="index.html#inside">Features</a></li>
+      <li><a href="index.html#replaces">One app</a></li>
+      <li><a href="index.html#day">A day</a></li>
+      <li><a href="index.html#faq">Questions</a></li>
+    </ul>
+    <ul>
+      <li><a href="download.html">Download</a></li>
+      <li><a href="https://github.com/theMindDeveloper/krnl0">Source on GitHub</a></li>
+      <li><a href="https://github.com/theMindDeveloper/krnl0/blob/main/CHANGELOG.md">Changelog</a></li>
+      <li><a href="https://github.com/theMindDeveloper/krnl0/blob/main/LICENSE.md">Licence</a></li>
+    </ul>
+    <p class="foot-note">Built by theMindDeveloper. Free and open source.</p>
+  </div>
+  <div class="foot-last">
+    <p>© 2026 KRNL0 · <a class="foot-gh" href="https://github.com/theMindDeveloper"><svg class="ico ico-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.36 9.36 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9l-.01 2.82c0 .27.18.6.69.49A10.24 10.24 0 0 0 22 12.23C22 6.58 17.52 2 12 2z"/></svg>theminddev</a></p>
+    <a class="btn btn-small" href="#dl-h"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5"/></svg><span class="btn-t">Back to the top</span></a>
+  </div>
+</footer>
+<script src="download.js" defer></script>
+</body>
+</html>
