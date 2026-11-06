@@ -61,7 +61,7 @@
   .plan-day { height: 620px; background-image: repeating-linear-gradient(180deg, transparent 0 calc(100% / 8 - 1px), #242019 calc(100% / 8 - 1px) calc(100% / 8)); }
   .plan-fixed, .pc { width: auto; top: calc((var(--s) - var(--d0)) / (var(--d1) - var(--d0)) * 100%); height: calc((var(--e) - var(--s)) / (var(--d1) - var(--d0)) * 100%); bottom: auto; }
   .plan-fixed { left: 12px; right: 12px; align-items: center; }
-  .pc { left: 34%; right: 12px; flex-direction: row; align-items: center; gap: 8px; transition: top 420ms var(--ease) var(--lag, 0ms); }
+  .pc { left: 12px; right: 12px; flex-direction: row; align-items: center; gap: 8px; transition: top 420ms var(--ease) var(--lag, 0ms); }
   .pc-0 { transition: top 120ms var(--ease), box-shadow 200ms var(--ease); }
   .plan-now { top: calc((var(--n, 14.6) - var(--d0)) / (var(--d1) - var(--d0)) * 100%); bottom: auto; left: -6px; right: -6px; width: auto; height: 2px; }
   .plan-scale { display: none; }

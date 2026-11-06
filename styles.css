@@ -781,7 +781,7 @@ iframe[src*="solo=radio"] { background: #0b0a10; }
 .hl-save .hl-dot { position: static; flex: 0 0 12px; margin: 0 2px 0 0; }
 .h-today { position: relative; left: auto; bottom: auto; width: min(560px, 100%); pointer-events: auto; }
 .h-stage h1 { font-size: clamp(52px, 5.4vw, 100px); max-width: 15ch; }
-@media (max-width: 640px) { .h-today { display: none; } }
+/* (the Today bar shows on phones too) */
 .h-stage h1 { max-width: 20ch; }
 .h-stage .h-lead { max-width: 44ch; }
 .h-stage h1 { font-size: clamp(52px, 5vw, 92px); max-width: 11ch; }
@@ -1151,7 +1151,7 @@ html { scroll-padding-top: 84px; }
   #cube-tile canvas { pointer-events: none; }
   #cube-tile .h-copy > h1 { font-size: clamp(42px, 13vw, 58px); max-width: 6.2em; }
   #cube-tile .h-copy > .h-lead { margin-top: max(16px, calc(30px + 71vw - 260px)); }
-  #cube-tile .h-today { display: none; }
+  #cube-tile .h-today { display: block; margin-top: 28px; }
 }
 /* above phone size the Today bar always starts under the cube's frame, never across it: the copy column is at least
    as tall as the cube plus the bar, and the bar is pushed to its foot */
@@ -1195,3 +1195,18 @@ html { scroll-padding-top: 84px; }
 @keyframes ht-hint { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
 @media (max-width: 1000px) { .js .ht-hint { display: none; } }
 @media (prefers-reduced-motion: reduce) { .js .ht-hint { animation: none; } }
+/* the day bar on a phone: a vertical swipe still scrolls the page, a sideways one moves the block */
+@media (max-width: 640px) {
+  .ht-b { touch-action: pan-y; }
+  .ht-n { font-size: 9.5px; letter-spacing: -0.02em; }
+  #cube-tile .h-today { padding: 10px 12px 9px; }
+}
+/* a phone's bar is too narrow for true durations: each block gets enough of the day to carry its name and a thumb */
+@media (max-width: 640px) {
+  .ht-b.b-run { --s: 6 !important; --e: 7.4 !important; }
+  .ht-b.b-lec { --s: 8.1 !important; --e: 10.8 !important; }
+  .ht-b.b-out { --s: 11.6 !important; --e: 14.3 !important; }
+  .ht-b.b-dr { --s: 14.3 !important; --e: 16.7 !important; }
+  .ht-b.b-gym { --s: 17.5 !important; --e: 19 !important; }
+  .ht-b.b-read { --s: 20 !important; --e: 21.9 !important; }
+}

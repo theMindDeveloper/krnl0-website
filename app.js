@@ -3,13 +3,44 @@
    app starting at once used to hold the cube back. */
 (() => {
   const fs = [...document.querySelectorAll('iframe[data-src]')]; if (!fs.length) return;
+  // Phones and tablets: every live tile is a whole copy of the app, and Safari on iPhone runs them all in one
+  // process. Starting the frame styles' three full apps together (plus the tour's five) used up its memory and the
+  // page crashed. There, tiles start one after another, and a tile far off screen is emptied until you come back
+  // (the radio is kept, so its music plays on).
+  const lite = matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').matches;
+  const queue = []; let busy = false;
+  const next = () => {
+    if (busy) return; const f = queue.shift(); if (!f) return;
+    busy = true; let done = false;
+    const free = () => { if (done) return; done = true; busy = false; setTimeout(next, 250); };
+    f.addEventListener('load', free, { once: true }); setTimeout(free, 5000);
+    f.src = f.dataset.src;
+  };
+  // loading="lazy" is dropped as the source is set: Safari never counts a frame placed deep in 3D (the tour) as
+  // near the screen, so it would leave it blank
+  const load = (f) => {
+    if (f.dataset.on) return; f.dataset.on = '1'; f.removeAttribute('loading');
+    if (lite) { queue.push(f); next(); } else f.src = f.dataset.src;
+  };
+  const unload = (f) => {
+    if (!f.dataset.on || /solo=radio/.test(f.dataset.src)) return;
+    const q = queue.indexOf(f); if (q >= 0) queue.splice(q, 1);
+    delete f.dataset.on; f.src = 'about:blank';
+  };
   let started = false;
   const go = () => {
     if (started) return; started = true;
-    const load = (f) => { if (!f.getAttribute('src')) f.src = f.dataset.src; };
     if (!('IntersectionObserver' in window)) { fs.forEach(load); return; }
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); load(e.target); } }), { rootMargin: '800px 0px' });
-    fs.forEach((f) => io.observe(f));
+    // a frame inside a 3D scene is watched through its section, whose box is plain and flat
+    const box = (f) => f.closest('.scene') || f;
+    const boxes = new Set(fs.map(box));
+    const each = (b, fn) => fs.forEach((f) => { if (box(f) === b) fn(f); });
+    const near = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) each(e.target, load); }), { rootMargin: '800px 0px' });
+    boxes.forEach((b) => near.observe(b));
+    if (lite) {
+      const far = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) each(e.target, unload); }), { rootMargin: '1100px 0px' });
+      boxes.forEach((b) => far.observe(b));
+    }
   };
   const soon = () => (window.requestIdleCallback ? requestIdleCallback(go, { timeout: 600 }) : setTimeout(go, 100));
   if (window.__krnlCube) soon(); else addEventListener('krnl:cube', soon, { once: true });
