@@ -407,7 +407,9 @@ document.querySelectorAll('.app-view').forEach((box) => {
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const rows = [...document.querySelectorAll('[data-par]')], ys = [...document.querySelectorAll('[data-par-y]')];
-  const stage = document.querySelector('.looks-stage');
+  // on phones and tablets the stack holds still: re-tilting three whole app windows on every scroll frame is what
+  // made Safari repaint them over and over
+  const stage = matchMedia('(max-width: 900px), (hover: none) and (pointer: coarse)').matches ? null : document.querySelector('.looks-stage');
   let raf = 0;
   const pos = (el) => { const r = el.getBoundingClientRect(); return (r.top + r.height / 2 - innerHeight / 2) / innerHeight; };   // -1 … 1 across the screen
   const tick = () => {

@@ -1148,7 +1148,7 @@ html { scroll-padding-top: 84px; }
 /* phone: the cube is big and stands over the headline's right side; the paragraph begins just under the cube */
 @media (max-width: 640px) {
   #cube-tile { --cube-w: 100vw; --cube-top: 30px; --cube-right: -34vw; --text-w: 100%; }
-  #cube-tile canvas { pointer-events: none; }
+  #cube-tile canvas { pointer-events: auto; }
   #cube-tile .h-copy > h1 { font-size: clamp(42px, 13vw, 58px); max-width: 6.2em; }
   #cube-tile .h-copy > .h-lead { margin-top: max(16px, calc(30px + 71vw - 260px)); }
   #cube-tile .h-today { display: block; margin-top: 28px; }
@@ -1209,4 +1209,20 @@ html { scroll-padding-top: 84px; }
   .ht-b.b-dr { --s: 14.3 !important; --e: 16.7 !important; }
   .ht-b.b-gym { --s: 17.5 !important; --e: 19 !important; }
   .ht-b.b-read { --s: 20 !important; --e: 21.9 !important; }
+}
+/* the cube takes touch too: a sideways drag spins it, a tap lights a part, an up-or-down swipe still scrolls */
+#cube-tile canvas { touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+/* phones and tablets: the frame-style stack is the same picture drawn flat. Tilting the three windows in real 3D
+   made Safari paint each whole 1920 x 1080 app page at full size and three times the pixel density before shrinking
+   it, which ran iPhone out of memory and reloaded the page. A flat tilt (squash, turn, slide, grow) looks the same
+   from the front and is painted at the size it is seen. */
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .looks-stage { perspective: none; --sp: 0.3; }
+  .look {
+    transform: translate(-50%, -50%) translate(calc(var(--s) * (2 - var(--s)) * 18px), calc(var(--s) * (2 - var(--s)) * -30px)) scale(1, calc(0.913 + var(--sp) * 0.048)) rotate(calc(-13deg + var(--sp) * 4deg))
+               translate(calc((var(--s) - 1) * (64px + var(--sp) * 64px) + var(--out) * 78%), calc((var(--s) - 1) * (-40px - var(--sp) * 22px) - var(--out) * 6%))
+               scale(calc(1 + var(--s) * 0.021));
+    will-change: auto;
+  }
+  .look[data-front="true"] { transform: translate(-50%, -50%) translateY(-8px) scale(1.136); }
 }

@@ -39,6 +39,22 @@
     };
     ['pointerdown', 'touchend', 'click', 'keydown'].forEach(function (t) { addEventListener(t, wake, true); addEventListener(t, wake, false); });
   })();
+  // phones and tablets: the frame-style windows are whole boards shown small, and each board's video node would
+  // start its own hidden YouTube player, three at once in one section: more than iPhone Safari holds, so the page
+  // crashed and reloaded. There, those windows leave the player out and draw at 1x, all a window that small shows.
+  if (q.get('dock') && matchMedia('(pointer: coarse)').matches) {
+    try { Object.defineProperty(window, 'devicePixelRatio', { get: function () { return 1; }, configurable: true }); } catch (e) {}
+    var far = function (v) { return /youtube\.com|youtu\.be|ytimg|vimeo|soundcloud/i.test(String(v)); };
+    var sa = Element.prototype.setAttribute;
+    Element.prototype.setAttribute = function (k, v) {
+      if ((this instanceof HTMLIFrameElement || this instanceof HTMLScriptElement) && String(k).toLowerCase() === 'src' && far(v)) v = 'about:blank';
+      return sa.call(this, k, v);
+    };
+    [HTMLIFrameElement.prototype, HTMLScriptElement.prototype].forEach(function (P) {
+      var d = Object.getOwnPropertyDescriptor(P, 'src'); if (!d || !d.set) return;
+      Object.defineProperty(P, 'src', { get: d.get, set: function (v) { d.set.call(this, far(v) ? 'about:blank' : v); }, configurable: true });
+    });
+  }
   // the radio has its own embed; in the full app it would sit on the calendar's edge
   if (q.get('solo') !== 'radio') document.write('<style>[data-testid="ambient-radio"]{display:none!important}</style>');
   // bare: only the part itself is painted; the page around it is see-through
