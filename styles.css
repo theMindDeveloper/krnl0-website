@@ -1222,3 +1222,14 @@ html { scroll-padding-top: 84px; }
 /* hero: the way to the install guide, under the buttons */
 #cube-tile .h-copy > .h-install { position: relative; z-index: 3; width: fit-content; max-width: var(--text-w); margin-top: -8px; font-size: 14px; font-weight: 500; color: #3f5c0a; text-underline-offset: 3px; }
 .aw-stats { background: #f3b49c; }
+/* footer blocks on a phone: each word sits flat across the top of its block, wrapping if it must, and the letter
+   stands below it, so the two never touch */
+@media (max-width: 640px) {
+  .blocks { height: 230px; min-height: 0; gap: 4px; }
+  .b { font-size: 17vw; padding: 0 0 6px 6px; }
+  .b small { writing-mode: horizontal-tb; top: 8px; left: 7px; right: 5px; font-size: 10.5px; line-height: 1.15; white-space: normal; overflow-wrap: anywhere; }
+}
+@media (max-width: 640px) {
+  .foot-last { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .foot-last .btn { white-space: nowrap; }
+}
