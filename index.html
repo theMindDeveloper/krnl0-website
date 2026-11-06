@@ -30,8 +30,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet"><!-- taste-skill-ignore: KRNL0 brand face -->
-<link rel="preload" href="hero.js?v=55420f01ce" as="script">
-<link rel="stylesheet" href="styles.css?v=3242f0e563">
+<link rel="preload" href="hero.js?v=b64837f15e" as="script">
+<link rel="stylesheet" href="styles.css?v=449a255d1d">
 <link rel="stylesheet" href="scenes/stage.css?v=71bd4619c7">
 <link rel="stylesheet" href="scenes/fly.css?v=d679719312">
 <link rel="stylesheet" href="scenes/sections.css?v=aebad80e66">
@@ -43,7 +43,7 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="topnav">
-  <a class="brand" href="#title"><img src="assets/krnl0-logo-128.png" width="28" height="28" alt="">KRNL0</a>
+  <a class="brand" href="#title" aria-label="KRNL0, back to the top"><span class="brand-mark" aria-hidden="true"><i>K</i><i>R</i><i>N</i><i>L</i><i>0</i></span></a>
   <nav aria-label="Main">
     <a href="#try">Overview</a>
     <a href="#tour">Tour</a>
@@ -63,13 +63,14 @@
   <div class="tile h-stage" id="cube-tile">
     <canvas id="cube" aria-label="The KRNL0 cube with Pomodoro, Todos, Habits and Terminal nodes wired to it. Point at a node or the cube; drag the cube to spin it." role="img"></canvas>
     <div class="h-copy">
-      <div class="h-mark" aria-hidden="true"><span>K</span><span>R</span><span>N</span><span>L</span><span>0</span></div>
-      <h1 id="title">Plan the day.<br>Watch it <em class="h-hl">happen.</em></h1>
-      <div class="h-lead h-apps"><p class="h-apps-l">Seven apps, one canvas</p><p class="h-apps-c"><span class="app-w aw-timer">timer</span><span class="app-w aw-todo">to-dos</span><span class="app-w aw-habit">habits</span><span class="app-w aw-cal">calendar</span><span class="app-w aw-clock">clock</span><span class="app-w aw-radio">radio</span><span class="app-w aw-stats">analytics</span></p></div>
+      <p class="h-eyebrow">Seven apps, one canvas</p>
+      <h1 id="title"><span class="h1-a">Plan</span> the day.<br>Watch it <em class="h-hl">happen.</em></h1>
+      <p class="h-lead h-apps"><span class="aw-timer">timer</span><span class="aw-todo">to-dos</span><span class="aw-habit">habits</span><span class="aw-cal">calendar</span><span class="aw-clock">clock</span><span class="aw-radio">radio</span><span class="aw-stats">analytics</span></p>
       <div class="h-actions">
         <a class="btn btn-ink" data-dl href="https://github.com/theMindDeveloper/krnl0/releases/latest"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5"/><path d="M4 18v2h16v-2"/></svg><span class="btn-t">Download for Windows</span></a>
-        <p class="h-meta"><span>Free · no account</span><span><a href="#try">See it in action</a> · <a href="download.html#windows">How to install</a></span></p>
+        <a class="btn btn-line h-see" href="#try"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l5.5-3.5z"/></svg><span class="btn-t">See it in action</span></a>
       </div>
+      <p class="h-meta">Free · no account · <a href="download.html">Mac or Linux: install guide</a></p>
       <div class="h-today" aria-label="Today, as KRNL0 sees it: a planned day with the current time moving across it">
         <div class="ht-head"><span>Today</span><span class="ht-right"><span class="ht-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M3 12h18"/></svg>drag the blocks</span><span class="ht-now" aria-live="off">--:--</span></span></div>
         <div class="ht-track">
@@ -87,21 +88,11 @@
       </div>
     </div>
   </div>
-  <a class="tile h-acid h-live" href="https://github.com/theMindDeveloper/krnl0/releases/latest">
-    <span class="hl-top"><svg class="hl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg>Free. No account.</span>
-    <p class="hl-line" data-type="Download, open, plan today."></p>
-    <b>Get KRNL0 for Windows <span aria-hidden="true">→</span></b>
-  </a>
-  <a class="tile h-rust h-live" href="#faq" aria-label="Stays on your computer: read how your data is kept">
-    <span class="hl-top"><svg class="hl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Stays on your computer</span>
-    <p class="hl-save"><i class="hl-dot" aria-hidden="true"></i><span>Today's plan</span> <span class="hl-ago" aria-live="off">saved just now</span></p>
-    <p class="hl-sub">No cloud, no tracking, no sign-up.</p>
-  </a>
-  <a class="tile h-cyan h-live" href="#parts-live" aria-label="Everything adds up: every app counts into the same analytics">
-    <span class="hl-top"><svg class="hl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Everything adds up</span>
-    <p class="hl-line hl-claude" data-type="Focus 2h 28m · 3 tasks done · 5-day streak"></p>
-    <p class="hl-sub hl-reply">Every app counts into the same analytics.</p>
-  </a>
+  <div class="h-strip">
+    <a href="download.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M4 19.5h16"/></svg><b>Free, no account</b><span>Download, open it, and today is planned.</span></a>
+    <a href="#faq"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><b>Stays on your computer</b><span>No cloud, no tracking, no sign-up.</span></a>
+    <a href="#parts-live"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>Everything adds up</b><span>Every app counts into the same analytics.</span></a>
+  </div>
 </section>
 
 <!-- ═══ TRY: the live board ═══ -->
@@ -413,7 +404,7 @@
 <script src="scenes/glance.js?v=0c00555838"></script>
 <script src="scenes/hairline/station.js?v=2f410f270c"></script>
 <script>Stage.init();</script>
-<script src="hero.js?v=55420f01ce" defer></script>
+<script src="hero.js?v=b64837f15e" defer></script>
 <script src="app.js?v=9540ed1028" defer></script>
 <script src="scenes/sections.js?v=ee530e4312" defer></script>
 </body>

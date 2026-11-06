@@ -1252,6 +1252,66 @@ html { scroll-padding-top: 84px; }
 @media (max-width: 640px) { .h-apps-c .app-w { font-size: 13px; padding: 5px 9px; } .h-meta { flex: 1 1 100%; } }
 /* the block mark sits above the headline, so where the cube stands over the headline it moves down by the mark's
    height (38px block + 18px space): the cube and the words keep exactly the overlap they had before */
-@media (max-width: 1099px) { #cube-tile { --cube-top: 112px; } }
-@media (max-width: 900px)  { #cube-tile { --cube-top: 104px; } }
-@media (max-width: 640px)  { #cube-tile { --cube-top: 86px; } }
+@media (max-width: 1099px) { #cube-tile { --cube-top: 100px; } }
+@media (max-width: 900px)  { #cube-tile { --cube-top: 92px; } }
+@media (max-width: 640px)  { #cube-tile { --cube-top: 64px; } }
+/* ── hero v3 (reviewed): one quiet line above the headline, the apps as a light line of names with their colour
+   dots, two equal buttons and one small line under them. The full palette lives in the cube and the day bar only. */
+#cube-tile .h-copy > .h-eyebrow { position: relative; z-index: 3; margin: 0 0 -8px; font-size: 14px; font-weight: 700; letter-spacing: 0.02em; color: rgba(26, 22, 18, 0.62); }
+#cube-tile .h-copy > .h-apps { display: flex; flex-wrap: wrap; gap: 6px 16px; max-width: var(--text-w); margin: 0; }
+.h-apps span { display: inline-flex; align-items: center; gap: 7px; font-size: 16px; font-weight: 500; color: #2a241d; }
+.h-apps span::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.h-apps .aw-timer { --c: var(--acid); } .h-apps .aw-todo { --c: var(--cyan); } .h-apps .aw-habit { --c: var(--purple); } .h-apps .aw-cal { --c: var(--rust); }
+.h-apps .aw-clock { --c: var(--amber); } .h-apps .aw-radio { --c: var(--lilac); } .h-apps .aw-stats { --c: #f3b49c; }
+.h-apps span[class^="aw-"] { background: none; padding: 0; }
+#cube-tile .h-copy > .h-actions { gap: 12px; align-items: stretch; }
+#cube-tile .h-copy > .h-actions .btn { min-height: 52px; padding: 0 24px; flex: 0 0 auto; }
+#cube-tile .h-copy > .h-actions .h-see { background: transparent; color: var(--ink-dark); box-shadow: inset 0 0 0 1.5px var(--ink-dark); }
+#cube-tile .h-copy > .h-actions .h-see:hover { background: rgba(26, 22, 18, 0.06); }
+#cube-tile .h-copy > .h-meta { position: relative; z-index: 3; margin: -10px 0 0; font-size: 13px; color: #554b38; }
+.h-meta a { color: #1a1612; font-weight: 700; text-underline-offset: 3px; }
+
+/* the three tiles under the hero become one calm strip */
+main .hero { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; grid-template-areas: "s" "z"; }
+.h-strip { grid-area: z; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: var(--radius); background: var(--node-bg); overflow: hidden; }
+.h-strip a { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 14px; row-gap: 4px; padding: 24px 26px; color: var(--ink); text-decoration: none; transition: background 160ms var(--ease); }
+.h-strip a + a { box-shadow: inset 1px 0 0 #2f2b24; }
+.h-strip a:hover { background: #24211b; }
+.h-strip svg { grid-row: 1 / 3; width: 22px; height: 22px; fill: none; stroke: var(--acid); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-top: 1px; }
+.h-strip b { font-size: 16px; } .h-strip span { font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+
+/* the block mark lives in the top bar now */
+.brand-mark { display: inline-flex; align-items: flex-end; gap: 2px; height: 20px; }
+.brand-mark i { font-style: normal; width: 14px; border-radius: 3px; color: #0a0908; font-size: 10.5px; font-weight: 800; line-height: 1; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2px; }
+.brand-mark i:nth-child(1) { height: 100%; background: var(--acid); } .brand-mark i:nth-child(2) { height: 80%; background: var(--cream); }
+.brand-mark i:nth-child(3) { height: 92%; background: var(--rust); } .brand-mark i:nth-child(4) { height: 72%; background: var(--cyan); }
+.brand-mark i:nth-child(5) { height: 86%; background: var(--purple); }
+
+@media (max-width: 760px) {
+  .h-strip { grid-template-columns: minmax(0, 1fr); }
+  .h-strip a + a { box-shadow: inset 0 1px 0 #2f2b24; }
+}
+@media (max-width: 640px) {
+  .h1-a { display: block; }
+  #cube-tile .h-copy > h1 { font-size: clamp(42px, 12.4vw, 50px); }
+  #cube-tile .h-copy > .h-actions .btn { flex: 1 1 100%; justify-content: center; }
+  #cube-tile .h-copy > .h-actions .btn-ink { min-height: 52px; } #cube-tile .h-copy > .h-actions .h-see { min-height: 48px; }
+  .h-apps span { font-size: 14px; }
+}
+#cube-tile .h-copy > .h-apps { flex-direction: row; }
+#cube-tile .h-copy > .h-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; max-width: none; }
+@media (max-width: 640px) { #cube-tile { --cube-right: -40vw; } }
+/* review round 2 */
+.brand-mark { height: 22px; gap: 2px; } .brand-mark i { width: 18px; font-size: 12px; border-radius: 4px; }
+#cube-tile .h-copy > .h-meta { display: block; margin-top: -10px; }
+@media (max-width: 640px) {
+  /* the cube alone, wholly inside the card, beside "the day." and "Watch it" */
+  #cube-tile { --cube-w: 36vw; --cube-right: 12px; --cube-top: 118px; }
+  #cube-tile .h-copy > .h-lead { margin-top: 4px; }
+  .h-apps span { font-size: 13.5px; } #cube-tile .h-copy > .h-apps { gap: 6px 12px; } .h-apps span::before { width: 6px; height: 6px; }
+  #cube-tile .h-today { margin-top: 16px; }
+  #cube-tile .h-copy > .h-actions .h-see { min-height: 44px; box-shadow: inset 0 0 0 1px var(--ink-dark); }
+}
+@media (max-width: 600px) { .topnav > .btn-sm:not(.btn-gh) { display: none; } .topnav .btn-gh { margin-left: auto; } }
+@media (min-width: 481px) and (max-width: 640px) { #cube-tile { --cube-w: 32vw; --cube-right: 12px; } #cube-tile .h-copy > .h-lead { margin-top: 4px; } }
+@media (max-width: 480px) { #cube-tile { --cube-w: 36vw; --cube-right: 8px; --cube-top: 112px; } #cube-tile .h-copy > h1 { font-size: clamp(40px, 11.4vw, 48px); } }
