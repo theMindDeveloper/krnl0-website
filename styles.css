@@ -1221,3 +1221,4 @@ html { scroll-padding-top: 84px; }
 .aw-cal { background: var(--rust); } .aw-clock { background: var(--amber); } .aw-radio { background: var(--lilac); }
 /* hero: the way to the install guide, under the buttons */
 #cube-tile .h-copy > .h-install { position: relative; z-index: 3; width: fit-content; max-width: var(--text-w); margin-top: -8px; font-size: 14px; font-weight: 500; color: #3f5c0a; text-underline-offset: 3px; }
+.aw-stats { background: #f3b49c; }

@@ -1,9 +1,3 @@
-/* the site opens at its top: no browser restores an old scroll spot, unless the link asks for a section */
-(() => {
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  if (!location.hash) scrollTo(0, 0);
-})();
-
 /* the live app tiles wait their turn: none starts until the hero cube has drawn its first frame (or 2.5s have
    passed), and then each only when it is nearly on screen. They share the page's main thread, so five copies of the
    app starting at once used to hold the cube back. */
