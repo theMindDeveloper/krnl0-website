@@ -134,11 +134,30 @@
   map.forEach((_, s) => io.observe(s));
 })();
 
+/* Windows: every download link starts the installer itself, not a GitHub page. The page asks GitHub which release
+   is the newest, so a new release is picked up with no change here; the answer is kept for an hour. If GitHub
+   cannot be reached the links stay as they are, on the releases page. */
+function directDownload() {
+  const REL = 'https://github.com/theMindDeveloper/krnl0/releases/latest';
+  const links = [...document.querySelectorAll(`a[href="${REL}"]`)]; if (!links.length) return;
+  const apply = (r) => links.forEach((a) => { a.href = r.url; a.title = `KRNL0 ${r.tag} for Windows`; a.dataset.version = r.tag; });
+  try { const c = JSON.parse(sessionStorage.getItem('krnl-dl') || 'null'); if (c && Date.now() - c.at < 36e5) { apply(c); return; } } catch (_) {}
+  fetch('https://api.github.com/repos/theMindDeveloper/krnl0/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then((rel) => {
+      const exe = (rel.assets || []).find((x) => /\.exe$/i.test(x.name) && !/blockmap/i.test(x.name)); if (!exe) return;
+      const r = { url: exe.browser_download_url, tag: rel.tag_name, at: Date.now() };
+      try { sessionStorage.setItem('krnl-dl', JSON.stringify(r)); } catch (_) {}
+      apply(r);
+    })
+    .catch(() => {});
+}
+
 /* download: say the right thing for the visitor's computer */
 (() => {
   const p = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '').toLowerCase();
   const os = /mac|iphone|ipad/.test(p) ? 'macOS' : /linux|x11|android|cros/.test(p) ? 'Linux' : 'Windows';
-  if (os === 'Windows') return;
+  if (os === 'Windows') { directDownload(); return; }
   document.querySelectorAll('[data-dl]').forEach((a) => { (a.querySelector('.btn-t') || a).textContent = `Get it for ${os}`; a.href = 'https://github.com/theMindDeveloper/krnl0#readme'; });
   const note = document.querySelector('.dl-note');
   if (note) note.textContent = `On ${os} you build it from the source for now: three commands, all on GitHub. A Windows installer is ready today.`;
