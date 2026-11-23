@@ -55,7 +55,9 @@
         so they load one at a time, only while the page is still, only near the screen, and far-away ones are put away again.
         On phones and slow connections they never load by themselves: a tap opens one. */
   const conn = navigator.connection || {};
-  const manual = matchMedia('(pointer: coarse)').matches || innerWidth < 700 || !!conn.saveData || /(^|-)(2g|3g)$/.test(conn.effectiveType || '');
+  const touch = matchMedia('(pointer: coarse)').matches;
+  // a window starts by itself unless the visitor asked to save data, is on a slow connection, or the device is short of memory
+  const manual = !!conn.saveData || /(^|-)(2g|3g)$/.test(conn.effectiveType || '') || !!(navigator.deviceMemory && navigator.deviceMemory <= 2);
   const wake = (f) => {
     if (f.dataset.woke || !f.dataset.src) return;
     f.dataset.woke = '1';
@@ -76,7 +78,7 @@
     addEventListener('scroll', () => { lastScroll = performance.now(); }, { passive: true });
     const pump = () => {
       if (busy || !queue.length) return;
-      if (performance.now() - lastScroll < 180) { setTimeout(pump, 140); return; }
+      if (performance.now() - lastScroll < (touch ? 450 : 180)) { setTimeout(pump, 140); return; }
       const f = queue.shift();
       if (f.dataset.woke || f.dataset.want !== '1') { pump(); return; }
       busy = true;
@@ -90,8 +92,8 @@
       const f = e.target;
       f.dataset.want = e.isIntersecting ? '1' : '0';
       if (e.isIntersecting && !f.dataset.woke && !queue.includes(f)) { queue.push(f); pump(); }
-    }), { rootMargin: '1800px 0px' });
-    const far = new IntersectionObserver((entries) => entries.forEach((e) => { if (!e.isIntersecting) putAway(e.target); }), { rootMargin: '3800px 0px' });
+    }), { rootMargin: touch ? '0px' : '1800px 0px', threshold: touch ? 0.35 : 0 });
+    const far = new IntersectionObserver((entries) => entries.forEach((e) => { if (!e.isIntersecting) putAway(e.target); }), { rootMargin: touch ? '1500px 0px' : '3800px 0px' });
     $$('iframe[data-src]').forEach((f) => { near.observe(f); far.observe(f); });
   } else $$('iframe[data-src]').forEach(wake);
   if (!manual && 'fetch' in window) {
@@ -124,7 +126,7 @@
   const lock = (live) => {
     if (!live.querySelector('iframe')) return;
     live.classList.add('is-locked');
-    live.addEventListener(manual ? 'click' : 'pointerdown', (e) => {
+    live.addEventListener(touch ? 'click' : 'pointerdown', (e) => {
       if (!live.classList.contains('is-locked')) return;
       live.classList.remove('is-locked');
       live.classList.add('is-active');
@@ -138,6 +140,14 @@
   document.addEventListener('pointerdown', (e) => {
     $$('.live:not(.is-locked)').forEach((l) => { if (!l.contains(e.target)) { l.classList.add('is-locked'); l.classList.remove('is-active'); } });
   });
+  if (touch) {
+    let at = scrollY;
+    addEventListener('scroll', () => {
+      const open = $$('.live:not(.is-locked)');
+      if (!open.length) { at = scrollY; return; }
+      if (Math.abs(scrollY - at) > 60) { open.forEach((l) => { l.classList.add('is-locked'); l.classList.remove('is-active'); }); at = scrollY; }
+    }, { passive: true });
+  }
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') $$('.live').forEach((l) => { l.classList.add('is-locked'); l.classList.remove('is-active'); }); });
 
   /* 3. The cube: six faces, the front one the nine parts of KRNL0. It builds itself, is lit by one
