@@ -211,3 +211,6 @@
 
 .sv-pix { display: inline-block; vertical-align: middle; fill: #c9f158; shape-rendering: crispEdges; max-width: 60%; height: auto; }
 .sv-tm-logo { display: flex !important; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+/* a clear gap between the "What you need" cards and the first coloured step */
+.sv-need { padding-bottom: clamp(48px, 6vw, 96px); }
