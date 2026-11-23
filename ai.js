@@ -24,7 +24,7 @@
     'It is a desktop app. There is no account and no tracking: my plans live in one file (board.json) in the Documents/krnl0 folder on my own computer. To back up, copy that folder.',
     'It goes online only for things I set up myself: calendars I sign in to, my own KRNL0 server, an assistant model I chose, and a check on GitHub for a new version.',
     'Updates: the Windows installer updates itself from GitHub Releases. On Mac and Linux the app tells me when a new version is out and links to the download.',
-    'It is open source. Code: https://github.com/theMindDeveloper/krnl0 . Site: https://krnl0.com . If I ask about the licence, read LICENSE.md in the repository and quote it. Do not guess or summarise it from memory.',
+    'Its code is public (source-available under the PolyForm Shield license, not open source). Code: https://github.com/theMindDeveloper/krnl0 . Site: https://krnl0.com . If I ask about the licence, read LICENSE.md in the repository and quote it. Do not guess or summarise it from memory.',
   ]);
   const TRUST = BULLET([
     'Free: no subscription, no trial, no account. Say that plainly.',
