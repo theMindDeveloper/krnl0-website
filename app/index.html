@@ -87,6 +87,7 @@
   }
   // the radio has its own embed; in the full app it would sit on the calendar's edge
   if (q.get('solo') === 'canvas') document.write('<style>.react-flow__minimap{display:none!important}</style>');
+  if (q.get('solo') === 'radio') document.write('<style>[data-testid="ambient-radio"] button[aria-label="Settings"],[data-testid="ambient-radio"] button[title="Settings"]{display:none!important}</style>');
   if (q.get('solo') !== 'radio') document.write('<style>[data-testid="ambient-radio"]{display:none!important}</style>');
   // bare: only the part itself is painted; the page around it is see-through
   if (q.get('bare') || q.get('solo') === 'radio') document.write('<style>:root{color-scheme:normal!important}html,body,#root{background:transparent!important}</style>');
