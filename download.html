@@ -19,6 +19,7 @@
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css?v=d5a4dc9a04">
+<link rel="stylesheet" href="ai.css?v=d0f54b44a0">
 <link rel="stylesheet" href="download.css?v=f66a1004fc">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -119,6 +120,33 @@
     <h2 id="win-h">KRNL0 for Windows</h2>
     <a class="dx-file" data-k="file" href="https://github.com/theMindDeveloper/krnl0/releases/latest"><svg aria-hidden="true"><use href="#i-dl"/></svg><span data-k="file-t">Get the installer</span></a>
   </header>
+  <div class="aib-wrap">
+    <div class="aib" data-prompt="windows" data-seq>
+      <div>
+        <p class="aib-tag"><svg><use href="#i-spark"/></svg>Stuck or unsure?</p>
+        <h3>Let your AI set this up with you</h3>
+        <p>Copy the instructions, paste them into your AI assistant, and answer a few questions. It explains every step and waits for your OK.</p>
+        <button class="copy" type="button"><span class="idle"><svg><use href="#i-copy"/></svg>Copy instructions for your AI</span><span class="done"><svg><use href="#i-ok"/></svg>Copied</span></button>
+        <div class="works"><small>Paste it into</small><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>any assistant</span></div>
+        <div class="after">
+          <ol>
+            <li><b>Open your AI</b>Any assistant you already use.</li>
+            <li><b>Paste</b>Then press send.</li>
+            <li><b>Answer</b>It asks a few short questions.</li>
+          </ol>
+          <button class="peek" type="button" aria-expanded="false"><svg><use href="#i-eye"/></svg>Read exactly what you copied</button>
+          <pre class="prompt"></pre>
+        </div>
+      </div>
+      <div class="chat" aria-label="An example of what happens in your AI assistant">
+        <div class="chat-top"><i></i><i></i><i></i><span>your AI assistant</span></div>
+        <div class="b you">[you paste the instructions]</div>
+        <div class="b ai">Hi. Quick question first: are you on Windows 10 or 11?<div class="chips"><span>Windows 11</span><span>Not sure</span></div></div>
+        <div class="b ai">Not sure is fine. Open Settings, then System, then About. Tell me what it says.</div>
+        <div class="b ai dots"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
   <div class="dx-os-body">
     <div>
       <p class="dx-why">Windows doesn't know who made KRNL0 yet: a signing certificate costs money, and this is a free app built in public on GitHub. You confirm once, and Windows won't ask again.</p>
@@ -148,6 +176,33 @@
     <h2 id="mac-h">KRNL0 for Mac</h2>
     <a class="dx-file" data-k="file" href="https://github.com/theMindDeveloper/krnl0/releases/latest"><svg aria-hidden="true"><use href="#i-dl"/></svg><span data-k="file-t">Get the disk image</span></a>
   </header>
+  <div class="aib-wrap">
+    <div class="aib" data-prompt="mac" data-seq>
+      <div>
+        <p class="aib-tag"><svg><use href="#i-spark"/></svg>Stuck or unsure?</p>
+        <h3>Let your AI set this up with you</h3>
+        <p>Copy the instructions, paste them into your AI assistant, and answer a few questions. It explains every step and waits for your OK.</p>
+        <button class="copy" type="button"><span class="idle"><svg><use href="#i-copy"/></svg>Copy instructions for your AI</span><span class="done"><svg><use href="#i-ok"/></svg>Copied</span></button>
+        <div class="works"><small>Paste it into</small><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>any assistant</span></div>
+        <div class="after">
+          <ol>
+            <li><b>Open your AI</b>Any assistant you already use.</li>
+            <li><b>Paste</b>Then press send.</li>
+            <li><b>Answer</b>It asks a few short questions.</li>
+          </ol>
+          <button class="peek" type="button" aria-expanded="false"><svg><use href="#i-eye"/></svg>Read exactly what you copied</button>
+          <pre class="prompt"></pre>
+        </div>
+      </div>
+      <div class="chat" aria-label="An example of what happens in your AI assistant">
+        <div class="chat-top"><i></i><i></i><i></i><span>your AI assistant</span></div>
+        <div class="b you">[you paste the instructions]</div>
+        <div class="b ai">Hi. Quick question first: which kind of Mac do you have?<div class="chips"><span>Apple silicon</span><span>Not sure</span></div></div>
+        <div class="b ai">Click the Apple menu, then About This Mac. Tell me what it says next to Chip or Processor.</div>
+        <div class="b ai dots"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
   <div class="dx-os-body">
     <div>
       <p class="dx-why">KRNL0 isn't signed by Apple yet, so the first time you open it, macOS asks you to allow it. After that it opens like any other app.</p>
@@ -175,6 +230,33 @@
     <h2 id="linux-h">KRNL0 for Linux</h2>
     <a class="dx-file" data-k="file" href="https://github.com/theMindDeveloper/krnl0/releases"><svg aria-hidden="true"><use href="#i-dl"/></svg><span data-k="file-t">Get the AppImage</span></a>
   </header>
+  <div class="aib-wrap">
+    <div class="aib" data-prompt="linux" data-seq>
+      <div>
+        <p class="aib-tag"><svg><use href="#i-spark"/></svg>Stuck or unsure?</p>
+        <h3>Let your AI set this up with you</h3>
+        <p>Copy the instructions, paste them into your AI assistant, and answer a few questions. It explains every step and waits for your OK.</p>
+        <button class="copy" type="button"><span class="idle"><svg><use href="#i-copy"/></svg>Copy instructions for your AI</span><span class="done"><svg><use href="#i-ok"/></svg>Copied</span></button>
+        <div class="works"><small>Paste it into</small><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>any assistant</span></div>
+        <div class="after">
+          <ol>
+            <li><b>Open your AI</b>Any assistant you already use.</li>
+            <li><b>Paste</b>Then press send.</li>
+            <li><b>Answer</b>It asks a few short questions.</li>
+          </ol>
+          <button class="peek" type="button" aria-expanded="false"><svg><use href="#i-eye"/></svg>Read exactly what you copied</button>
+          <pre class="prompt"></pre>
+        </div>
+      </div>
+      <div class="chat" aria-label="An example of what happens in your AI assistant">
+        <div class="chat-top"><i></i><i></i><i></i><span>your AI assistant</span></div>
+        <div class="b you">[you paste the instructions]</div>
+        <div class="b ai">Hi. Quick question first: which Linux are you on?<div class="chips"><span>Ubuntu</span><span>Not sure</span></div></div>
+        <div class="b ai">Not sure is fine. If you have a terminal, I will give you one short command to find out, and explain it first.</div>
+        <div class="b ai dots"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
   <div class="dx-os-body">
     <div>
       <p class="dx-why" data-k="linux-why">One file, nothing to install: an AppImage runs on most distributions.</p>
@@ -202,6 +284,15 @@
   <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg><b>Updating</b><span>Download the new version here and run it over the old one. Your board lives in your Documents folder and stays as it is.</span></div>
   <div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><b>Stays on your computer</b><span>No account, no tracking. YouTube videos and AI reach their own services only when you use them.</span></div>
   <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg><b>Free and open</b><span>Read the code, build it yourself, or help make it better. MIT licence.</span></div>
+</section>
+
+<section class="ai-more" aria-labelledby="aim-h">
+  <h2 id="aim-h">Rather have your AI check it with you?</h2>
+  <p>Not sure KRNL0 is the real thing, or want to build it yourself? Copy instructions for your AI assistant and let it explain, show you where to look, and say what it could not check.</p>
+  <div class="pills">
+    <button class="pill quiet" type="button" data-prompt="real"><svg><use href="#i-gh"/></svg>Ask your AI if KRNL0 is real</button>
+    <button class="pill" type="button" data-prompt="source"><svg><use href="#i-spark"/></svg>Build it yourself with your AI</button>
+  </div>
 </section>
 
 <section class="dx-help" aria-labelledby="help-h">
@@ -239,6 +330,7 @@
     <p class="foot-note">Built by theMindDeveloper. Free, and the source is public.<br>© 2026 KRNL0</p>
   </div>
 </footer>
+<script src="ai.js?v=2f9e22124d" defer></script>
 <script src="cube.js?v=3ba4e831e5" defer></script>
 <script src="download.js?v=2c50b9b623" defer></script>
 </body>

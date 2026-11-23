@@ -1,0 +1,96 @@
+/* "Let your AI set this up": the card, the slim bar, the small pills and the toast. Hidden without script (the buttons need it). */
+.aib, .bar, .pill, .ai-more { display: none; }
+.js .aib { display: grid; }
+.js .bar { display: flex; }
+.js .pill { display: inline-flex; }
+.js .ai-more { display: block; }
+  /* ── the AI box (full) ── */
+  .aib { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; padding: clamp(22px, 2.6vw, 38px); border-radius: 24px; background: var(--ink); color: var(--paper); }
+  .aib-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font: 500 14px/1 var(--f-m); color: var(--acid); }
+  .aib-tag svg { width: 18px; height: 18px; }
+  .aib h3 { font: 740 clamp(28px, 3.2vw, 46px)/1.02 var(--f-d); font-stretch: 104%; letter-spacing: -0.035em; text-wrap: balance; }
+  .aib p { margin-top: 12px; max-width: 42ch; color: #ddd6c6; font-size: 17px; line-height: 1.5; }
+  .copy { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 60px; margin-top: 22px; padding: 0 26px; border: 0; border-radius: 14px; background: var(--acid); color: var(--ink); font: 650 18px/1 var(--f-t); cursor: pointer; transition: transform 140ms var(--ease-out), background-color 160ms ease; }
+  .copy svg { width: 22px; height: 22px; flex: none; }
+  .copy:active { transform: scale(0.97); }
+  @media (hover: hover) { .copy:hover { background: #d8ff6e; } }
+  .copy .idle, .copy .done { display: inline-flex; align-items: center; gap: 12px; }
+  .copy .done { display: none; }
+  .is-copied .copy { background: var(--paper); }
+  .is-copied .copy .idle { display: none; }
+  .is-copied .copy .done { display: inline-flex; }
+  .works { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .works span { padding: 7px 12px; border-radius: 8px; background: #2a2824; color: #ddd6c6; font: 500 14px/1 var(--f-t); }
+  .works small { align-self: center; color: #b3aa94; font-size: 13px; }
+  .after { display: none; margin-top: 22px; padding-top: 18px; border-top: 1px solid #2f2b24; }
+  .is-copied .after { display: grid; gap: 14px; }
+  .after ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; counter-reset: s; list-style: none; padding: 0; }
+  .after li { counter-increment: s; padding: 12px; border-radius: 12px; background: #1f1d1a; font-size: 14px; line-height: 1.35; color: #ddd6c6; }
+  .after li::before { content: counter(s); display: grid; place-items: center; width: 26px; height: 26px; margin-bottom: 8px; border-radius: 7px; background: var(--acid); color: var(--ink); font: 700 14px/1 var(--f-m); }
+  .after li b { display: block; color: var(--paper); font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+  .peek { justify-self: start; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 10px; background: #2a2824; color: var(--paper); font: 600 14px/1 var(--f-t); cursor: pointer; }
+  .peek svg { width: 18px; height: 18px; }
+  .peek[aria-expanded='true'] { background: var(--paper); color: var(--ink); }
+  .prompt { display: none; margin-top: 2px; padding: 16px 18px; max-height: 280px; overflow: auto; border-radius: 12px; background: #0a0908; color: #d4cfc0; font: 400 13px/1.6 var(--f-m); white-space: pre-wrap; }
+  .prompt.is-open { display: block; }
+
+  /* the chat that shows what the AI does */
+  .chat { display: grid; gap: 10px; padding: clamp(16px, 2vw, 26px); border-radius: 20px; background: #1b1917; align-content: start; }
+  .chat-top { display: flex; align-items: center; gap: 8px; padding-bottom: 12px; font: 500 13px/1 var(--f-m); color: #8a8270; border-bottom: 1px solid #2c2925; }
+  .chat-top i { width: 10px; height: 10px; border-radius: 50%; background: #38322a; }
+  .b { max-width: 88%; padding: 12px 15px; border-radius: 16px; font-size: 15.5px; line-height: 1.4; opacity: 0; transform: translateY(10px); }
+  .b.you { justify-self: end; background: var(--paper); color: var(--ink); border-bottom-right-radius: 5px; }
+  .b.ai { justify-self: start; background: #2a2824; color: var(--paper); border-bottom-left-radius: 5px; }
+  .b.ai::before { content: ''; display: inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: -2px; border-radius: 50%; background: var(--acid); }
+  .chips { display: flex; gap: 8px; margin-top: 10px; }
+  .chips span { padding: 8px 14px; border-radius: 999px; background: #3a3732; font: 600 14px/1 var(--f-t); }
+  .chips span:first-child { background: var(--acid); color: var(--ink); }
+  .b.dots { padding: 14px 16px; }
+  .dots i { display: inline-block; width: 7px; height: 7px; margin: 0 2px; border-radius: 50%; background: #8a8270; }
+  .in .b { animation: bub 520ms var(--ease-expo) forwards; }
+  .in .b:nth-of-type(1) { animation-delay: 150ms; } .in .b:nth-of-type(2) { animation-delay: 1150ms; } .in .b:nth-of-type(3) { animation-delay: 2500ms; } .in .b:nth-of-type(4) { animation-delay: 3600ms; }
+  .in .dots i { animation: dot 1s ease-in-out infinite; } .in .dots i:nth-child(2) { animation-delay: 140ms; } .in .dots i:nth-child(3) { animation-delay: 280ms; }
+  @keyframes bub { to { opacity: 1; transform: none; } }
+  @keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+  /* ── the compact bar (for each way on a guide) ── */
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; padding: 14px 16px; border-radius: 16px; background: var(--ink); color: var(--paper); }
+  .bar .ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #2a2824; color: var(--acid); flex: none; }
+  .bar .ic svg { width: 24px; height: 24px; }
+  .bar .tx { flex: 1 1 240px; min-width: 0; }
+  .bar .tx b { display: block; font: 650 18px/1.2 var(--f-t); }
+  .bar .tx span { display: block; margin-top: 2px; font-size: 14px; color: #b3aa94; }
+  .bar .copy { margin: 0; min-height: 48px; padding: 0 20px; font-size: 16px; border-radius: 12px; }
+  .is-copied.bar .copy { background: var(--paper); }
+  .ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .way { display: grid; gap: 14px; padding: 22px; border-radius: 20px; background: var(--paper); color: var(--ink); }
+  .way h3 { font: 740 clamp(24px, 2.4vw, 34px)/1.05 var(--f-d); letter-spacing: -0.03em; }
+  .way p { font-size: 16px; color: #3d3a33; }
+
+  /* ── the small pills ── */
+  .pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--acid); color: var(--ink); font: 650 16px/1 var(--f-t); cursor: pointer; transition: transform 140ms var(--ease-out); }
+  .pill svg { width: 20px; height: 20px; }
+  .pill:active { transform: scale(0.97); }
+  .pill.quiet { background: var(--ink); color: var(--paper); }
+  .pill.quiet svg { color: var(--acid); }
+  .toast { position: fixed; z-index: 50; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: 10px; max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 600 15px/1.3 var(--f-t); box-shadow: 0 16px 40px -12px rgba(18, 17, 16, 0.5); transform: translate(-50%, 160%); transition: transform 360ms var(--ease-expo); }
+  .toast.is-on { transform: translate(-50%, 0); }
+  .toast svg { width: 20px; height: 20px; color: var(--acid); flex: none; }
+  @media (max-width: 860px) {
+    .aib { grid-template-columns: minmax(0, 1fr); }
+    .after ol { grid-template-columns: minmax(0, 1fr); }
+    .after li { display: grid; grid-template-columns: auto 1fr; gap: 0 12px; align-items: start; }
+    .after li::before { margin: 0; grid-row: span 2; }
+    .copy { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { .b { opacity: 1; transform: none; animation: none !important; } }
+
+.aib-wrap { padding: clamp(22px, 3vw, 40px) var(--margin) 0; }
+.dx-os .aib { box-shadow: 0 30px 60px -34px rgba(18, 17, 16, 0.6); }
+.dx-os .dx-os-body { padding-top: clamp(26px, 3.4vw, 48px); }
+.sv-way .bar { margin: 22px 0 6px; }
+.ai-more { padding: clamp(40px, 5vw, 72px) var(--margin) 0; }
+.ai-more h2 { font: 740 clamp(30px, 4vw, 60px)/1 var(--f-d); font-stretch: 104%; letter-spacing: -0.04em; text-wrap: balance; margin: 0 0 12px; }
+.ai-more p { max-width: 56ch; margin: 0 0 20px; font-size: 18px; line-height: 1.5; color: #3d3a33; }
+.copy { font-family: var(--f-t); }
