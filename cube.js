@@ -140,7 +140,7 @@
     const run = () => { if (!raf && !calm.matches) { t0 = performance.now(); raf = requestAnimationFrame(tick); } };
 
     // on a phone the headline and the cube drift at different speeds as you scroll, and the scroll turns the cube
-    if (!wide.matches && !calm.matches) {
+    if (!wide.matches && !calm.matches && hero.classList.contains('hero')) {
       const title = $('h1', hero), col = scene.parentElement;
       let queued = false;
       const drift = () => {

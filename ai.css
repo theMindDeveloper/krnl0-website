@@ -16,9 +16,9 @@
   @media (hover: hover) { .copy:hover { background: #d8ff6e; } }
   .copy .idle, .copy .done { display: inline-flex; align-items: center; gap: 12px; }
   .copy .done { display: none; }
-  .is-copied .copy { background: var(--paper); }
-  .is-copied .copy .idle { display: none; }
-  .is-copied .copy .done { display: inline-flex; }
+  .just .copy { background: var(--paper); }
+  .just .copy .idle { display: none; }
+  .just .copy .done { display: inline-flex; }
   .works { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
   .works span { padding: 7px 12px; border-radius: 8px; background: #2a2824; color: #ddd6c6; font: 500 14px/1 var(--f-t); }
   .works small { align-self: center; color: #b3aa94; font-size: 13px; }
@@ -48,7 +48,7 @@
   .b.dots { padding: 14px 16px; }
   .dots i { display: inline-block; width: 7px; height: 7px; margin: 0 2px; border-radius: 50%; background: #8a8270; }
   .in .b { animation: bub 520ms var(--ease-expo) forwards; }
-  .in .b:nth-of-type(1) { animation-delay: 150ms; } .in .b:nth-of-type(2) { animation-delay: 1150ms; } .in .b:nth-of-type(3) { animation-delay: 2500ms; } .in .b:nth-of-type(4) { animation-delay: 3600ms; }
+  .in .b:nth-of-type(2) { animation-delay: 150ms; } .in .b:nth-of-type(3) { animation-delay: 1150ms; } .in .b:nth-of-type(4) { animation-delay: 2500ms; } .in .b:nth-of-type(5) { animation-delay: 3600ms; }
   .in .dots i { animation: dot 1s ease-in-out infinite; } .in .dots i:nth-child(2) { animation-delay: 140ms; } .in .dots i:nth-child(3) { animation-delay: 280ms; }
   @keyframes bub { to { opacity: 1; transform: none; } }
   @keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
@@ -61,7 +61,7 @@
   .bar .tx b { display: block; font: 650 18px/1.2 var(--f-t); }
   .bar .tx span { display: block; margin-top: 2px; font-size: 14px; color: #b3aa94; }
   .bar .copy { margin: 0; min-height: 48px; padding: 0 20px; font-size: 16px; border-radius: 12px; }
-  .is-copied.bar .copy { background: var(--paper); }
+  .just.bar .copy { background: var(--paper); }
   .ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
   .way { display: grid; gap: 14px; padding: 22px; border-radius: 20px; background: var(--paper); color: var(--ink); }
   .way h3 { font: 740 clamp(24px, 2.4vw, 34px)/1.05 var(--f-d); letter-spacing: -0.03em; }
@@ -94,3 +94,26 @@
 .ai-more h2 { font: 740 clamp(30px, 4vw, 60px)/1 var(--f-d); font-stretch: 104%; letter-spacing: -0.04em; text-wrap: balance; margin: 0 0 12px; }
 .ai-more p { max-width: 56ch; margin: 0 0 20px; font-size: 18px; line-height: 1.5; color: #3d3a33; }
 .copy { font-family: var(--f-t); }
+
+/* the card on a phone: smaller, with less to read */
+@media (max-width: 860px) {
+  .aib-wrap { padding-top: 18px; }
+  .aib { gap: 16px; padding: 18px; border-radius: 20px; }
+  .aib-tag { margin-bottom: 8px; font-size: 13px; }
+  .aib h3 { font-size: 26px; }
+  .aib > div:first-child > p:not(.aib-tag) { display: none; }
+  .copy { min-height: 52px; margin-top: 14px; font-size: 16px; }
+  .works { display: none; }
+  .chat { gap: 8px; padding: 14px; border-radius: 16px; }
+  .chat-top { padding-bottom: 8px; font-size: 12px; }
+  .b { padding: 9px 12px; font-size: 14.5px; }
+  .chat .b:nth-of-type(4) { display: none; }
+  .after { margin-top: 14px; padding-top: 12px; }
+  .after ol { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .after li { display: block; padding: 8px; font-size: 12.5px; }
+  .after li::before { width: 22px; height: 22px; margin-bottom: 4px; font-size: 12px; }
+  .after li b { font-size: 13.5px; margin: 0; }
+  .after li span { display: none; }
+  .ai-more h2 { font-size: 28px; }
+  .ai-more p { font-size: 16px; }
+}
