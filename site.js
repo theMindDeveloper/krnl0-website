@@ -78,7 +78,7 @@
     addEventListener('scroll', () => { lastScroll = performance.now(); }, { passive: true });
     const pump = () => {
       if (busy || !queue.length) return;
-      if (performance.now() - lastScroll < (touch ? 450 : 180)) { setTimeout(pump, 140); return; }
+      if (performance.now() - lastScroll < (touch ? 60 : 180)) { setTimeout(pump, 140); return; }
       const f = queue.shift();
       if (f.dataset.woke || f.dataset.want !== '1') { pump(); return; }
       busy = true;
@@ -92,8 +92,8 @@
       const f = e.target;
       f.dataset.want = e.isIntersecting ? '1' : '0';
       if (e.isIntersecting && !f.dataset.woke && !queue.includes(f)) { queue.push(f); pump(); }
-    }), { rootMargin: touch ? '0px' : '1800px 0px', threshold: touch ? 0.35 : 0 });
-    const far = new IntersectionObserver((entries) => entries.forEach((e) => { if (!e.isIntersecting) putAway(e.target); }), { rootMargin: touch ? '1500px 0px' : '3800px 0px' });
+    }), { rootMargin: touch ? '900px 0px' : '1800px 0px' });
+    const far = new IntersectionObserver((entries) => entries.forEach((e) => { if (!e.isIntersecting) putAway(e.target); }), { rootMargin: touch ? '2000px 0px' : '3800px 0px' });
     $$('iframe[data-src]').forEach((f) => { near.observe(f); far.observe(f); });
   } else $$('iframe[data-src]').forEach(wake);
   if (!manual && 'fetch' in window) {
